@@ -55,5 +55,5 @@ class Player:
         else:
             self.__setEnergy__(Jugador.getMAX_ENERGY())
 
-        return change, self.getEnergy()
+        return self.getEnergy()
     
