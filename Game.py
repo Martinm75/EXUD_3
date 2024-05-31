@@ -30,7 +30,7 @@ class Player:
         if self.MIN_ENERGY <= energy <= self.MAX_ENERGY:
             self.__energy = energy
         else:
-            raise ValueError(f"Energy must be between {self.MIN_ENERGY} and {self.MAX_ENERGY}")
+            raise ValueError(f"tiene que estar entre {self.MIN_ENERGY} y {self.MAX_ENERGY}")
 
     def __str__(self):
         return f"[{self.__idPlayer}, {self.__nickName}, {self.__energy}]"
@@ -47,3 +47,4 @@ class Player:
 
         self.__setEnergy(new_energy)
         return charge, self.__energy
+
