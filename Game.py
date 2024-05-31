@@ -22,3 +22,16 @@ class Game:
         self.__player2.boost(num2)
 
         print("[("+num1+","+self.__player1.boost(num1)+"),("+num2,+","+self.__player2.boost(num2)+")]" )
+    def winner(self):
+        if self.__player1.getEnergy()>self.__player1.getEnergy():
+            max=self.__player1
+        else:
+            max=self.__player2
+            
+        return max
+    
+    def play(self):
+        cont =0
+        while(cont<self.__rounds):
+            self.playRound()
+            cont+1
