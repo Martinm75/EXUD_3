@@ -16,10 +16,10 @@ class Jugador:
 class Player:
     __slots__ = ['__idPlayer', '__nickName', '__energy']
 
-    def __init__(self, id, nickName, MAX_ENERGY, MIN_ENERGY):
+    def __init__(self, id, nickName):
         self.__idPlayer = id
         self.__nickName = nickName
-        self.__energy = (MAX_ENERGY-MIN_ENERGY)/2
+        self.__energy = (Jugador.getMAX_ENERGY(self)-Jugador.getMIN_ENERGY(self))/2
 
     def getIdPlayer(self):
         return self.__idPlayer
