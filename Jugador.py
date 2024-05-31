@@ -5,46 +5,46 @@ class Jugador:
     MIN_ENERGY = 0
 
 class Player:
-    __slots__ = ['__idPlayer', '__nickName', '__energy']
-
-    def __init__(self, id, nickName):
-        self.__idPlayer = id
+    def __init__(self, idPlayer, nickName):
+        self.__idPlayer = idPlayer
         self.__nickName = nickName
-        self.__energy = (Jugador.getMAX_ENERGY(self)-Jugador.getMIN_ENERGY(self))/2
+        self.__energy = (MAX_ENERGY + MIN_ENERGY) // 2
 
     def getIdPlayer(self):
         return self.__idPlayer
 
-    def getNickName(self):
-        return self.__nickName
-
-    def getEnergy(self):
-        return self.__nickName
-
     def setIdPlayer(self, idPlayer):
         self.__idPlayer = idPlayer
+
+    def getNickName(self):
+        return self.__nickName
 
     def setNickName(self, nickName):
         self.__nickName = nickName
 
-    def __setEnergy__(self, energy):
-       self.__energy = energy
+    def getEnergy(self):
+        return self.__energy
 
-    def toString(self):
-        cad = "[" + self.getIdPlayer() + ", "
-        cad += str(self.getNickName()) + ", "
-        cad += str(self.getEnergy()) + "]"
-        return cad
-
-    def boost(self, change):
-        if Jugador.getMIN_ENERGY() <= (self.getEnergy() + change) <= Jugador.getMAX_ENERGY():
-            self.__setEnergy__((self.getEnergy()+change))
-
-        elif (self.getEnergy() + change)< Jugador.getMIN_ENERGY():
-            self.__setEnergy__(Jugador.getMIN_ENERGY())
-
+    def __setEnergy(self, energy):
+        if MIN_ENERGY <= energy <= MAX_ENERGY:
+            self.__energy = energy
         else:
-            self.__setEnergy__(Jugador.getMAX_ENERGY())
+            raise ValueError(f"Energy must be between {MIN_ENERGY} and {MAX_ENERGY}")
 
-        return self.getEnergy()
+    def __str__(self):
+        return f"[{self.__idPlayer}, {self.__nickName}, {self.__energy}]"
+
+    def boost(self, charge):
+        if not isinstance(charge, int):
+            charge = 0
+
+        new_energy = self.__energy + charge
+        if new_energy < MIN_ENERGY:
+            new_energy = MIN_ENERGY
+        elif new_energy > MAX_ENERGY:
+            new_energy = MAX_ENERGY
+        
+        self.__setEnergy(new_energy)
+        return charge, self.__energy
+
     
