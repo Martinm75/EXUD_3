@@ -10,13 +10,12 @@ class Game:
         self.__rounds= rounds
 
     def playRound(self):
-        charge1 = random.randint(-25, 25)
-        charge2 = random.randint(-25, 25)
+        num1 = random.randint(-25, 25)
+        num2 = random.randint(-25, 25)
+        res1 = self.__player1.boost(num1)
+        res2 = self.__player2.boost(num2)
 
-        result1 = self.__player1.boost(charge1)
-        result2 = self.__player2.boost(charge2)
-
-        return [result1, result2]
+        return [res1, res2]
 
     def winner(self):
         if self.__player1.getEnergy() > self.__player2.getEnergy():
