@@ -1,17 +1,8 @@
 
 
 class Jugador:
-    __slots__ = ['__MAX_ENERGY', '__MIN_ENERGY']
-
-    def __init__(self):
-        self.__MAX_ENERGY = 100
-        self.__MIN_ENERGY = 0
-
-    def getMIN_ENERGY(self):
-        return self.__MIN_ENERGY
-
-    def getMAX_ENERGY(self):
-        return self.__MAX_ENERGY
+    MAX_ENERGY = 100
+    MIN_ENERGY = 0
 
 class Player:
     __slots__ = ['__idPlayer', '__nickName', '__energy']
